@@ -92,9 +92,7 @@ class _MyDiceState extends State<MyDice> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Column(children: [
+    return Column(children: [
           Flexible(
               flex: 3,
               child: Container(
@@ -156,8 +154,11 @@ class _MyDiceState extends State<MyDice> {
                   ],
                 ),
               ))
-        ]),
-      ),
-    );
+        ]
+      );
+
+
+
+
   }
 }

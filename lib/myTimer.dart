@@ -68,9 +68,7 @@ class _MyTimerState extends State<MyTimer> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Column(
+    return Column(
           children: [
             Flexible(
                 flex: 1,
@@ -80,38 +78,18 @@ class _MyTimerState extends State<MyTimer> {
                   color: Colors.black,
                   child: const Center(
                     child: Text(
-                      'My timer',
+                      '타이머',
                       style: TextStyle(color: Colors.white, fontSize: 50),
                     ),
                   ),
                 )),
-            Flexible(
-              flex: 1,
-              child: SizedBox(
-                width: double.infinity,
-                height: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    timeButton(sec: 60, color: Colors.amber),
-                    timeButton(
-                        sec: 30,
-                        color: const Color.fromARGB(255, 197, 194, 184)),
-                    timeButton(
-                        sec: -60, color: const Color.fromARGB(255, 53, 47, 28)),
-                    timeButton(
-                        sec: -30,
-                        color: const Color.fromARGB(255, 238, 197, 74)),
-                  ],
-                ),
-              ),
-            ),
+
             Flexible(
                 flex: 2,
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  color: Colors.amber,
+                  color: Colors.black,
                   child: Center(
                     child: Text(
                       timeView,
@@ -120,11 +98,34 @@ class _MyTimerState extends State<MyTimer> {
                   ),
                 )),
             Flexible(
+              flex: 2,
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: Colors.black,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    timeButton(sec: 60, color: Colors.white),
+                    timeButton(
+                        sec: 30,
+                        color:Colors.white),
+                    timeButton(
+                        sec: -60, color: Colors.white),
+                    timeButton(
+                        sec: -30,
+                        color: Colors.white),
+                  ],
+                ),
+              ),
+            ),
+            
+            Flexible(
                 flex: 1,
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  color: Colors.blue,
+                  color: Colors.black,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -133,12 +134,14 @@ class _MyTimerState extends State<MyTimer> {
                           onPressed: timeStart,
                           icon: const Icon(Icons.pause_circle_rounded),
                           iconSize: 50,
+                          color: Colors.white,
                         )
                       else
                         IconButton(
                           onPressed: timeStart,
                           icon: const Icon(
                             Icons.play_circle_fill_rounded,
+                            color: Colors.white,
                           ),
                           iconSize: 50,
                         ),
@@ -149,6 +152,7 @@ class _MyTimerState extends State<MyTimer> {
                         onPressed: timeReset,
                         icon: const Icon(
                           Icons.restore_rounded,
+                          color: Colors.white,
                         ),
                         iconSize: 50,
                       )
@@ -156,19 +160,17 @@ class _MyTimerState extends State<MyTimer> {
                   ),
                 ))
           ],
-        ),
-      ),
-    );
+        );
   }
 
   GestureDetector timeButton({required int sec, required Color color}) {
     return GestureDetector(
       onTap: () => addTime(sec),
       child: Container(
-        width: 100,
-        height: 100,
-        decoration: BoxDecoration(shape: BoxShape.circle, color: color),
-        child: Center(child: Text('$sec')),
+        width: double.infinity,
+        height: 50,
+        decoration: BoxDecoration(color: color),
+        child: Center(child: Text('$sec 초 추가')),
       ),
     );
   }
